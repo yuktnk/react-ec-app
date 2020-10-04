@@ -3,8 +3,9 @@ import 'firebase/auth';
 import 'firebase/firestore';
 import 'firebase/storage';
 import 'firebase/functions';
-import {firebaseConfig} from './config';
+import { firebaseConfig } from './config';
 
+// configファイルの設定を使ってfirebaseアプリを初期化
 firebase.initializeApp(firebaseConfig);
 
 export const auth = firebase.auth();

@@ -2,6 +2,7 @@ import { IconButton, makeStyles } from '@material-ui/core'
 import React, {useCallback} from 'react'
 import AddPhotoAlternateIcon from '@material-ui/icons/AddPhotoAlternate';
 import {storage} from '../../firebase/index'
+import ImagePreview from './ImagePreview.jsx'
 
 const useStyles = makeStyles({
   icon: {
@@ -37,13 +38,19 @@ const ImageArea = (props) => {
 
   return (
     <div>
+      <div className="p-grid__list-images">
+        {props.images.length > 0 && (
+          props.images.map(image => <ImagePreview id={image.id} path={image.path} key={image.id} />)
+        )}
+
+      </div>
       <div className="u-text-right">
         <span>商品画像を登録する</span>
         <IconButton className={classes.icon}>
           <label>
             <AddPhotoAlternateIcon/>
             <input className="u-display-none" type="file"
-                    id="image" onChange={(event) => uploadOmage(event)}
+                    id="image" onChange={(event) => uploadImage(event)}
             />
           </label>
         </IconButton>

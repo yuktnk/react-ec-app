@@ -50,12 +50,13 @@ const ProductEdit = () => {
       db.collection('products').doc(id).get()
         .then(snapshot => {
           const data = snapshot.data()
-          setImages(data.images);
-          setName(data.name);
-          setDescription(data.description);
-          setCategory(data.category);
-          setGender(data.gender);
-          setPrice(data.price);
+          setImages(data.images)
+          setName(data.name)
+          setDescription(data.description)
+          setCategory(data.category)
+          setGender(data.gender)
+          setPrice(data.price)
+          setSizes(data.sizes)
         })
     }
     return () => {
@@ -95,12 +96,12 @@ const ProductEdit = () => {
           onChange={inputPrice} rows={1} value={price} type={"number"}
         />
         <div className="module-spacer--small" />
-        <SetSizeArea sizes={sizes}/>
+        <SetSizeArea sizes={sizes} setSizes={setSizes} />
         <div className="module-spacer--small" />
         <div className="center">
           <PrimaryButton
             label={"商品情報を保存"}
-            onClick={() => dispatch(saveProduct(id, name, description, gender, category, price, images))}
+            onClick={() => dispatch(saveProduct(id, name, description, gender, category, price, images, sizes))}
           />
         </div>
       </div>
